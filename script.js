@@ -1,5 +1,6 @@
 function iShoot(enemy){
     enemy.classList.add("dead");
+    enemyHealth(enemyhealthpoints -5);
     if(!livingEnemies().length){
         alert("YOU WIN");
         window.location.reload();
@@ -26,7 +27,7 @@ function enemyShootsMe(enemy){
     {
         enemyGunSound.play();
         enemy.classList.add("shooting");
-        updateHealthPoints(healthPoints -10);
+        updateHealthPoints(healthPoints -5);
         let time3 = Math.random()*400 ;
         setTimeout(()=>{
             enemy.classList.remove("shooting");
@@ -52,14 +53,24 @@ function updateHealthPoints(points){
     healthBar.style.width = points + "%";
     if(healthPoints <1)
     {
+        music.pause();
+        end.play();
         alert("GAME OVER");
         window.location.reload();
     }
 
 }
+var enemyhealthpoints =100;
+function enemyHealth(points)
+{
+    enemyhealthpoints=points;
+    var enemyhealthBar = document.querySelector("#Score");
+    enemyhealthBar.style.width = points + "%";
+}
 var myGunSound = new Audio("./bang.mp3");
 var enemyGunSound = new Audio("./bang.mp3");
 var music = new Audio("./soundtrack.mp3");
+var end = new Audio("./gameOver.mp3");
 music.loop = true;
 enemyGunSound.volume=0.6;
 // randomEnemyAttacks();
