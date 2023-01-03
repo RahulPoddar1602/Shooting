@@ -1,12 +1,12 @@
 function iShoot(enemy){
     enemy.classList.add("dead");
     enemyHealth(enemyhealthpoints -5);
-    if(!livingEnemies().length){
-        win.play();
-        music.pause();
-        alert("YOU WIN");
-        window.location.reload();
-    }
+    // if(!livingEnemies().length){
+    //     win.play();
+    //     music.pause();
+    //     alert("YOU WIN");
+    //     window.location.reload();
+    // }
 }
 function newGame(){
     randomEnemyAttacks();
