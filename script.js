@@ -1,12 +1,14 @@
 function iShoot(enemy){
     enemy.classList.add("dead");
     enemyHealth(enemyhealthpoints -5);
-    // if(!livingEnemies().length){
-    //     win.play();
-    //     music.pause();
-    //     alert("YOU WIN");
-    //     window.location.reload();
-    // }
+    if(!livingEnemies().length){
+            music.pause();
+            win.play();
+            setTimeout(()=>{
+                alert("You Win");
+                window.location.reload();
+            },5000);
+    }
 }
 function newGame(){
     randomEnemyAttacks();
@@ -70,15 +72,6 @@ function enemyHealth(points)
     enemyhealthpoints=points;
     var enemyhealthBar = document.querySelector("#Score");
     enemyhealthBar.style.width = points + "%";
-    if(enemyhealthpoints <1)
-    {
-        music.pause();
-        win.play();
-        setTimeout(()=>{
-            alert("You Win");
-            window.location.reload();
-        },5000);
-    }
 }
 var myGunSound = new Audio("./bang.mp3");
 var enemyGunSound = new Audio("./bang.mp3");
